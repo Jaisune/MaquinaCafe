@@ -30,6 +30,102 @@ public class Producto {
         creacionProducto(nombre);
     }
 
+    public Tipo getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(Tipo nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public static int getCantidadTotal() {
+        return cantidadTotal;
+    }
+
+    public static void setCantidadTotal(int cantidadTotal) {
+        Producto.cantidadTotal = cantidadTotal;
+    }
+
+    public static double getPrecioActualSolo() {
+        return precioActualSolo;
+    }
+
+    public static void setPrecioActualSolo(double precioActualSolo) {
+        Producto.precioActualSolo = precioActualSolo;
+    }
+
+    public static double getPrecioActualDescafeinado() {
+        return precioActualDescafeinado;
+    }
+
+    public static void setPrecioActualDescafeinado(double precioActualDescafeinado) {
+        Producto.precioActualDescafeinado = precioActualDescafeinado;
+    }
+
+    public static double getPrecioActualTe() {
+        return precioActualTe;
+    }
+
+    public static void setPrecioActualTe(double precioActualTe) {
+        Producto.precioActualTe = precioActualTe;
+    }
+
+    public static int getCantidadSolo() {
+        return cantidadSolo;
+    }
+
+    public static void setCantidadSolo(int cantidadSolo) {
+        Producto.cantidadSolo = cantidadSolo;
+    }
+
+    public static int getCantidadDescafeinado() {
+        return cantidadDescafeinado;
+    }
+
+    public static void setCantidadDescafeinado(int cantidadDescafeinado) {
+        Producto.cantidadDescafeinado = cantidadDescafeinado;
+    }
+
+    public static int getCantidadTe() {
+        return cantidadTe;
+    }
+
+    public static void setCantidadTe(int cantidadTe) {
+        Producto.cantidadTe = cantidadTe;
+    }
+
+    public static int getCantidadSoloVendida() {
+        return cantidadSoloVendida;
+    }
+
+    public static void setCantidadSoloVendida(int cantidadSoloVendida) {
+        Producto.cantidadSoloVendida = cantidadSoloVendida;
+    }
+
+    public static int getCantidadDescafeinadoVendida() {
+        return cantidadDescafeinadoVendida;
+    }
+
+    public static void setCantidadDescafeinadoVendida(int cantidadDescafeinadoVendida) {
+        Producto.cantidadDescafeinadoVendida = cantidadDescafeinadoVendida;
+    }
+
+    public static int getCantidadTeVendida() {
+        return cantidadTeVendida;
+    }
+
+    public static void setCantidadTeVendida(int cantidadTeVendida) {
+        Producto.cantidadTeVendida = cantidadTeVendida;
+    }
+
     /**
      * Método que se encarga de que una vez se cree el tipo de producto deseado
      * se le asignen los valores que este emplea, es decir, su precio, así como de

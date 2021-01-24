@@ -79,22 +79,35 @@ public class Maquina {
         System.out.println("introducirMonedas");
     }
 
+    /**
+     * Método para crear un café solo
+     */
     private void crearSolo() {
+        //Asignamos el tipo del producto
         Tipo t = Tipo.SOLO;
-
+        //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
         Producto p = new Producto(t);
+
 
     }
 
+    /**
+     * Método para crear un café descaféinado
+     */
     private void crearDescafeinado() {
         Tipo t = Tipo.DESCAFEINADO;
 
         Producto p = new Producto(t);
+
     }
 
+    /**
+     * Método para crear un té
+     */
     private void crearTe() {
         Tipo t = Tipo.TE;
         Producto p = new Producto(t);
+
     }
 
     private void menuAdmin() {
@@ -170,9 +183,9 @@ public class Maquina {
         System.out.println("\n MENÚ ");
         System.out.println("========");
         System.out.println("1: Introducir monedas");
-        System.out.println("2: Café solo");
-        System.out.println("3: Descafeinado");
-        System.out.println("4: Té");
+        System.out.println("2: Café solo ("+Producto.getPrecioActualSolo()+") (Cantidad: "+Producto.getCantidadSolo()+")");
+        System.out.println("3: Descafeinado ("+Producto.getPrecioActualDescafeinado()+") (Cantidad: "+Producto.getCantidadDescafeinado()+")");
+        System.out.println("4: Té ("+Producto.getPrecioActualTe()+") (Cantidad: "+Producto.getCantidadTe()+")");
         System.out.println("5: Menú administración");
         System.out.println("6: Cancelar operación");
         System.out.println("0: Apagar la máquina");
