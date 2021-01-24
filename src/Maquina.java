@@ -11,7 +11,8 @@ public class Maquina {
      * 1 - Llamada al método de mostrar menú
      * 2 - Llamada al método de elegir opciones
      * 3 - Se encarga de que el Main reciba un boolean en el que indicamos
-     *     que si pulsamos 0, la maquina debe apagarse.
+     * que si pulsamos 0, la maquina debe apagarse.
+     *
      * @return menuMaquina
      */
     public boolean menuMaquina() {
@@ -46,6 +47,7 @@ public class Maquina {
     /**
      * Método en el que una vez hechas las comprobaciones,
      * asignamos a cada caso sus funciones correspondientes
+     *
      * @param opcion (valor del menú)
      */
     private void iniciarMenu(int opcion) {
@@ -78,15 +80,21 @@ public class Maquina {
     }
 
     private void crearSolo() {
-        System.out.println("crearSolo");
+        Tipo t = Tipo.SOLO;
+
+        Producto p = new Producto(t);
+
     }
 
     private void crearDescafeinado() {
-        System.out.println("crearDescafeinado");
+        Tipo t = Tipo.DESCAFEINADO;
+
+        Producto p = new Producto(t);
     }
 
     private void crearTe() {
-        System.out.println("crearTe");
+        Tipo t = Tipo.TE;
+        Producto p = new Producto(t);
     }
 
     private void menuAdmin() {
@@ -101,6 +109,7 @@ public class Maquina {
      * Método que hace las comprobaciones necesarias
      * para que en el menú solo puedas introducir un valor del 0 al 6
      * así como impedir caracteres no númerico..
+     *
      * @return opMenu (int asignado a la opción del menú)..
      */
     private int introducirOpcionMenu() {
@@ -141,6 +150,7 @@ public class Maquina {
 
     /**
      * Método que comprueba que la opción introducida está entre 1 y 6
+     *
      * @param opMenu (valor que introducimos en el menu)
      * @return rangoValido
      */
