@@ -101,7 +101,7 @@ public class Maquina {
      * Método que hace las comprobaciones necesarias
      * para que en el menú solo puedas introducir un valor del 0 al 6
      * así como impedir caracteres no númerico..
-     * @return opMenu (int asignado a la opción del menú)
+     * @return opMenu (int asignado a la opción del menú).
      */
     private int introducirOpcionMenu() {
 
