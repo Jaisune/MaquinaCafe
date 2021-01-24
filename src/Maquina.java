@@ -101,7 +101,7 @@ public class Maquina {
      * Método que hace las comprobaciones necesarias
      * para que en el menú solo puedas introducir un valor del 0 al 6
      * así como impedir caracteres no númerico..
-     * @return opMenu (int asignado a la opción del menú).
+     * @return opMenu (int asignado a la opción del menú)..
      */
     private int introducirOpcionMenu() {
 
@@ -158,7 +158,7 @@ public class Maquina {
     public void mostrarMenu() {
         //Realiz
         System.out.println("\n MENÚ ");
-        System.out.println("======");
+        System.out.println("========");
         System.out.println("1: Introducir monedas");
         System.out.println("2: Café solo");
         System.out.println("3: Descafeinado");
