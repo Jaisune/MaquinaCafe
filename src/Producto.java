@@ -150,4 +150,32 @@ public class Producto {
         }
     }
 
+    //Comprobaciones de stock
+    public static boolean hayStock(Tipo t){
+        boolean hayStock=false;
+        if(t==Tipo.valueOf(Tipo.class,"SOLO")) {
+            if (cantidadSolo>0){
+                hayStock= true;
+            } else {
+                hayStock = false;
+            }
+        }
+        if(t==Tipo.valueOf(Tipo.class,"DESCAFEINADO")) {
+            if (cantidadDescafeinado>0){
+                hayStock = true;
+            } else {
+                hayStock = false;
+            }
+        }
+        if(t==Tipo.valueOf(Tipo.class,"TE")) {
+            if (cantidadTe>0){
+                hayStock = true;
+            } else {
+                hayStock = false;
+            }
+        }
+        return hayStock;
+
+    }
+
 }
