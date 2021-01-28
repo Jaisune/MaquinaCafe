@@ -17,6 +17,7 @@ public class Maquina {
      */
 
     Scanner sc = new Scanner(System.in);
+    String insertarDinero = "No hay suficiente dinero para comprar el producto";
 
     /**
      * Este método consta de varias partes:
@@ -39,7 +40,8 @@ public class Maquina {
 
         //1 - Llamada al método que muestra el menú
         mostrarMenu();
-
+        //Mostramos la suma de la caja de monedas
+        System.out.println("Cantidad total: "+Moneda.getCajetin()+"€");
         //2 - Asignación de la opción que se introduzca en el menú
         opcion = introducirOpcionMenu();
 
@@ -67,7 +69,7 @@ public class Maquina {
         System.out.println("4: Té ("+Producto.getPrecioActualTe()+") (Cantidad: "+Producto.getCantidadTe()+")");
         System.out.println("5: Menú administración");
         System.out.println("6: Devolver Monedas");
-        System.out.println("0: Apagar la máquina");
+        System.out.println("0: Apagar la máquina\n");
     }
 
     /**
@@ -159,7 +161,36 @@ public class Maquina {
     }
 
     private void introducirMonedas() {
-        System.out.println("introducirMonedas");
+        boolean salir, monedaAceptada;
+        int moneda=-1;
+        do{
+            salir=false;
+            monedaAceptada=true;
+            //Muestro monedas aceptada
+            Moneda.mostrarMonedas();
+
+            //Mostrar cantidad de la caja
+            System.out.println("Cantidad total: "+Moneda.getCajetin()+"€");
+            try {
+                moneda = sc.nextInt();
+            }catch (Exception e) {
+                System.out.println("Introduzca un caracter númerico.");
+                monedaAceptada=false;
+            }
+            if(monedaAceptada) {
+                if (moneda == 0) {
+                    salir = true;
+                    monedaAceptada=false;
+                } else {
+                    if (Moneda.esMonedaValida(moneda)) {
+                        Moneda.totalCajetin(moneda);
+                        System.out.println("Cantidad total: "+Moneda.getCajetin()+"€");
+                    } else {
+                        System.out.println("Moneda introducida no valida.");
+                    }
+                }
+            }
+        }while(!salir);
     }
 
     /**
@@ -175,15 +206,17 @@ public class Maquina {
         //PASO3(COMPROBAR STOCK)
         //PASO4(CREAR OBJETO)
 
-
-        //Si hay stock, podemos crear cafés, sino, no.
-        if (Producto.hayStock(t)) {
-            //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
-            Producto p = new Producto(t);
-        }else{
-            System.out.println("No hay más cafés solos disponibles.");
-        }
-
+        //if(Moneda.hayDinero(t)) {
+            //Si hay stock, podemos crear cafés, sino, no.
+            if (Producto.hayStock(t)) {
+                //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
+                Producto p = new Producto(t);
+            } else {
+                System.out.println("No hay más cafés solos disponibles.");
+            }
+        /*}else{
+            System.out.println(insertarDinero);
+        }*/
 
     }
 
