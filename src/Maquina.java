@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * @author Jaime Díaz Menéndez
+ * @author Jaime Diaz Menendez
  */
 
 
@@ -10,18 +10,18 @@ public class Maquina {
     /**
      * En esta clase realizamos todos los procesos necesarios para llevar a cabo las funciones de las máquina.
      * Seguimos la siguiente estructura:
-     *  - Creación del menú de la máquina
-     *  - Comprobaciones
-     *  - Switch con los casos de las opciones a escoger y sus correspondientes procesos y métodos a usar
-     *  - Menu Administración (el cual sigue la misma estructura que el menú principal)
+     * - Creacion del menú de la maquina
+     * - Comprobaciones
+     * - Switch con los casos de las opciones a escoger y sus correspondientes procesos y metodos a usar
+     * - Menu Administración (el cual sigue la misma estructura que el menú principal)
      */
 
     Scanner sc = new Scanner(System.in);
     String insertarDinero = "No hay suficiente dinero para comprar el producto";
 
     /**
-     * Este método consta de varias partes:
-     * 1 - Llamada al método de mostrar menú
+     * Este metodo consta de varias partes:
+     * 1 - Llamada al método de mostrar menu
      * 2 - Llamada al método de elegir opciones
      * 3 - Se encarga de que el Main reciba un boolean en el que indicamos
      * que si pulsamos 0, la maquina debe apagarse.
@@ -41,7 +41,7 @@ public class Maquina {
         //1 - Llamada al método que muestra el menú
         mostrarMenu();
         //Mostramos la suma de la caja de monedas
-        System.out.println("Cantidad total: "+Moneda.getCajetin()+"€");
+        System.out.println("Cantidad total: " + Moneda.getCajetin() + "€");
         //2 - Asignación de la opción que se introduzca en el menú
         opcion = introducirOpcionMenu();
 
@@ -58,26 +58,26 @@ public class Maquina {
     }
 
     /**
-     * Método en el que se imprimen las opciones del menú
+     * Metodo en el que se imprimen las opciones del menu
      */
     public void mostrarMenu() {
         System.out.println("\n               MENÚ ");
         System.out.println("=====================================");
         System.out.println("1: Introducir monedas");
-        System.out.println("2: Café solo ("+Producto.getPrecioActualSolo()+") (Cantidad: "+Producto.getCantidadSolo()+")");
-        System.out.println("3: Descafeinado ("+Producto.getPrecioActualDescafeinado()+") (Cantidad: "+Producto.getCantidadDescafeinado()+")");
-        System.out.println("4: Té ("+Producto.getPrecioActualTe()+") (Cantidad: "+Producto.getCantidadTe()+")");
+        System.out.println("2: Café solo (" + Producto.getPrecioActualSolo() + ") (Cantidad: " + Producto.getCantidadSolo() + ")");
+        System.out.println("3: Descafeinado (" + Producto.getPrecioActualDescafeinado() + ") (Cantidad: " + Producto.getCantidadDescafeinado() + ")");
+        System.out.println("4: Té (" + Producto.getPrecioActualTe() + ") (Cantidad: " + Producto.getCantidadTe() + ")");
         System.out.println("5: Menú administración");
         System.out.println("6: Devolver Monedas");
         System.out.println("0: Apagar la máquina\n");
     }
 
     /**
-     * Método que hace las comprobaciones necesarias
+     * Metodo que hace las comprobaciones necesarias
      * para que en el menú solo puedas introducir un valor del 0 al 6
-     * así como impedir caracteres no númerico..
+     * asi como impedir caracteres no numerico..
      *
-     * @return opMenu (int asignado a la opción del menú)..
+     * @return opMenu (int asignado a la opción del menu)..
      */
     private int introducirOpcionMenu() {
 
@@ -116,7 +116,7 @@ public class Maquina {
     }
 
     /**
-     * Método que comprueba que la opción introducida está entre 1 y 6
+     * Metodo que comprueba que la opción introducida esta entre 1 y 6
      *
      * @param opMenu (valor que introducimos en el menu)
      * @return rangoValido
@@ -130,10 +130,10 @@ public class Maquina {
     }
 
     /**
-     * Método en el que una vez hechas las comprobaciones,
+     * Metodo en el que una vez hechas las comprobaciones,
      * asignamos a cada caso sus funciones correspondientes
      *
-     * @param opcion (valor del menú)
+     * @param opcion (valor del menu)
      */
     private void iniciarMenu(int opcion) {
 
@@ -162,39 +162,39 @@ public class Maquina {
 
     private void introducirMonedas() {
         boolean salir, monedaAceptada;
-        int moneda=-1;
-        do{
-            salir=false;
-            monedaAceptada=true;
+        int moneda = -1;
+        do {
+            salir = false;
+            monedaAceptada = true;
             //Muestro monedas aceptada
             Moneda.mostrarMonedas();
 
             //Mostrar cantidad de la caja
-            System.out.println("Cantidad total: "+Moneda.getCajetin()+"€");
+            System.out.println("Cantidad total: " + Moneda.getCajetin() + "€");
             try {
                 moneda = sc.nextInt();
-            }catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Introduzca un caracter númerico.");
-                monedaAceptada=false;
+                monedaAceptada = false;
             }
-            if(monedaAceptada) {
+            if (monedaAceptada) {
                 if (moneda == 0) {
                     salir = true;
-                    monedaAceptada=false;
+                    monedaAceptada = false;
                 } else {
                     if (Moneda.esMonedaValida(moneda)) {
                         Moneda.totalCajetin(moneda);
-                        System.out.println("Cantidad total: "+Moneda.getCajetin()+"€");
+                        System.out.println("Cantidad total: " + Moneda.getCajetin() + "€");
                     } else {
                         System.out.println("Moneda introducida no valida.");
                     }
                 }
             }
-        }while(!salir);
+        } while (!salir);
     }
 
     /**
-     * Método para crear un café solo
+     * Método para crear un cafe solo
      */
     private void crearSolo() {
 
@@ -206,7 +206,8 @@ public class Maquina {
         //PASO3(COMPROBAR STOCK)
         //PASO4(CREAR OBJETO)
 
-        //if(Moneda.hayDinero(t)) {
+        //Comprobar si hay dinero suficiente para comprar el producto
+        if (Moneda.comprobarPrecio(t)) {
             //Si hay stock, podemos crear cafés, sino, no.
             if (Producto.hayStock(t)) {
                 //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
@@ -214,58 +215,66 @@ public class Maquina {
             } else {
                 System.out.println("No hay más cafés solos disponibles.");
             }
-        /*}else{
+        } else {
             System.out.println(insertarDinero);
-        }*/
+        }
 
     }
 
     /**
-     * Método para crear un café descaféinado
+     * Método para crear un cafe descaféinado
      */
     private void crearDescafeinado() {
         Tipo t = Tipo.DESCAFEINADO;
+        //Comprobar si hay dinero suficiente para comprar el producto
+        if (Moneda.comprobarPrecio(t)) {
+            if (Producto.hayStock(t)) {
+                //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
+                Producto p = new Producto(t);
+            } else {
+                System.out.println("No hay más cafés descafeinados disponibles.");
 
-        if (Producto.hayStock(t)) {
-            //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
-            Producto p = new Producto(t);
-        }else{
-            System.out.println("No hay más cafés descafeinados disponibles.");
+            }
+        } else {
+            System.out.println(insertarDinero);
         }
 
     }
 
     /**
-     * Método para crear un té
+     * Método para crear un te
      */
     private void crearTe() {
         Tipo t = Tipo.TE;
-        if (Producto.hayStock(t)) {
-            //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
-            Producto p = new Producto(t);
-        }else{
-            System.out.println("No hay más te disponibles.");
+        if (Moneda.comprobarPrecio(t)) {
+            if (Producto.hayStock(t)) {
+                //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
+                Producto p = new Producto(t);
+            } else {
+                System.out.println("No hay más te disponibles.");
+            }
+        } else {
+            System.out.println(insertarDinero);
         }
 
     }
-
 
 
     private void menuAdmin() {
         boolean saliradmin = false;
         //bucle que repite el programa hasta que le asignemos la opción de salir (0)
-        do{
+        do {
             menuAdministracion();
-        }while(!saliradmin);
+        } while (!saliradmin);
 
     }
 
     /**
-     * Este método se encarga de realizar las operaciones necesarias para el menú de Administración.
-     * La estructura es la misma que la del menú base de la máquina, cambiando solamente los métodos a los que llamamos.
-     * Los comentarios también permanecen para explicar de nuevo los pasos que sigue el programa
+     * Este metodo se encarga de realizar las operaciones necesarias para el menú de Administración.
+     * La estructura es la misma que la del menú base de la maquina, cambiando solamente los metodos a los que llamamos.
+     * Los comentarios tambien permanecen para explicar de nuevo los pasos que sigue el programa
      */
-    private boolean menuAdministracion(){
+    private boolean menuAdministracion() {
 
         //1. Mostrar las instrucciones del menú
         //2. Introducir la opción
@@ -293,7 +302,7 @@ public class Maquina {
         return salirAdmin;
     }
 
-    private void mostrarMenuAdmin(){
+    private void mostrarMenuAdmin() {
         System.out.println("\nMENÚ ADMINISTRACIÓN");
         System.out.println("===================");
         System.out.println("1: Mostrar contenido de cajetines");
@@ -304,10 +313,12 @@ public class Maquina {
     }
 
     /**
-     * Método
+     * Metodo que hace las comprobaciones
+     * del menu administración
+     *
      * @return opMenuAdmin a menuAdmin
      */
-    private int introducirOpcionAdmin(){
+    private int introducirOpcionAdmin() {
         int opMenuAdmin = 0;
         boolean salirAdmin;
         //System.out.println("Introduce una de las opciones: ");
@@ -344,9 +355,10 @@ public class Maquina {
     }
 
     /**
-     * Método que comprueba que los valores del menu admín van del 0 al 4
+     * Metodo que comprueba que los valores del menu admín van del 0 al 4
+     *
      * @param opMenuAdmin
-     * @return rangoValidoAdmin al método introducirOpcionAdmin
+     * @return rangoValidoAdmin al metodo introducirOpcionAdmin
      */
     private boolean rangoValidoAdmin(int opMenuAdmin) {
         if (opMenuAdmin >= 0 && opMenuAdmin <= 4) {
@@ -357,10 +369,10 @@ public class Maquina {
     }
 
     /**
-     * Método en el que una vez hechas las comprobaciones,
-     * asigna a cada caso las funciones del menú Admin
+     * Metodo en el que una vez hechas las comprobaciones,
+     * asigna a cada caso las funciones del menu Admin
      *
-     * @param opMenuAdmin (valor del menú)
+     * @param opMenuAdmin (valor del menu)
      */
     private void iniciarMenuAdmin(int opMenuAdmin) {
 
@@ -383,27 +395,25 @@ public class Maquina {
         }
     }
 
-    public void mostrarContenidoCajetines(){
+    public void mostrarContenidoCajetines() {
 
     }
-    public void modificarPrecio(){
+
+    public void modificarPrecio() {
 
     }
-    public void mostrarVentas(){
+
+    public void mostrarVentas() {
 
     }
-    public void addProducto(){
+
+    public void addProducto() {
 
     }
 
     private void devolverMonedas() {
         System.out.println("devolverMonedas");
     }
-
-
-
-
-
 
 
 }

@@ -153,6 +153,7 @@ public class Moneda {
                 break;
             case 20:
                 cant20Insertada++;
+                break;
             case 10:
                 cant10Insertada++;
                 break;
@@ -163,12 +164,11 @@ public class Moneda {
     }
     private static double calcularCajetin(){
         double suma;
-        suma=((cant1eInsertada*1.00)+(cant2eInsertada*2.00)+(cant50Insertada*0.50)+(cant10Insertada*0.10)+(cant20Insertada*0.20)+(cant5Insertada*0.05));
-        return suma;
+        return suma=(cant1eInsertada*1.00)+(cant2eInsertada*2.00)+(cant50Insertada*0.50)+(cant10Insertada*0.10)+(cant20Insertada*0.20)+(cant5Insertada*0.05);
     }
 
     public static void mostrarMonedas(){
-        System.out.println("\nINTRODUCIR MONEDAS");
+        System.out.println("\n INTRODUCIR MONEDAS");
         System.out.println("Monedas aceptadas:");
         System.out.println("5 -> 5 Cts.");
         System.out.println("10 -> 10 Cts.");
@@ -180,10 +180,38 @@ public class Moneda {
     }
 
     public static boolean esMonedaValida(int moneda){
-        if(moneda==1 || moneda==2 || moneda == 5 || moneda == 10 || moneda == 20 ||moneda == 50){
+        if(moneda==1 || moneda==2 || moneda == 5 || moneda == 10 || moneda == 20 || moneda == 50){
             return true;
         }else{
             return false;
         }
+    }
+
+    public static boolean comprobarPrecio(Tipo t){
+        boolean respuesta=false;
+        switch (t) {
+            case SOLO:
+                if (cajetin>=Producto.getPrecioActualSolo()) {
+                    respuesta=true;
+                }else{
+                    respuesta=false;
+                }
+                break;
+            case DESCAFEINADO:
+                if (cajetin>=Producto.getPrecioActualDescafeinado()) {
+                    respuesta=true;
+                }else{
+                    respuesta=false;
+                }
+                break;
+            case TE:
+                if (cajetin>=Producto.getPrecioActualTe()) {
+                    respuesta=true;
+                }else{
+                    respuesta=false;
+                }
+                break;
+        }
+        return respuesta;
     }
 }
