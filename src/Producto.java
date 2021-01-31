@@ -139,14 +139,17 @@ public class Producto {
             precio=precioActualSolo;  //Asigno su precio correspondiente
             cantidadSoloVendida++; //Se suma al contador de cantidades vendidas
             cantidadSolo--; //A la cantidad que había en stock, se le descuenta el producto creado
+            Moneda.restarCajetin(precioActualSolo);
         }else if(t==Tipo.valueOf(Tipo.class,"DESCAFEINADO")){
             precio=precioActualDescafeinado;
             cantidadDescafeinadoVendida++;
             cantidadDescafeinado--;
+            Moneda.restarCajetin(precioActualDescafeinado);
         }else if(t==Tipo.valueOf(Tipo.class,"TE")){
             precio=precioActualSolo;
             cantidadTeVendida++;
             cantidadTe--;
+            Moneda.restarCajetin(precioActualTe);
         }
     }
 

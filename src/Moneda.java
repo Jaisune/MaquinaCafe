@@ -186,6 +186,134 @@ public class Moneda {
             return false;
         }
     }
+    public static void restarCajetin(double precio){
+        //Calculamos el precio restante (a devolver) en numero entero
+        int centimos = calcularCambioCajetin(precio);
+        //Calcularemos las monedas a devolver
+        devolucionCambio(centimos);
+        //Método en el que sumamos las monedas restantes a las monedas que va a tener la maquina
+        vaciarCajetin();
+        cajetin=calcularCajetin();
+    }
+
+    /**
+     * Este metodo se encarga de sumar las monedas restantes de la compra a las monedas que va a tener la máquina
+     */
+    private static void vaciarCajetin(){
+        cant2e=cant2e+cant2eInsertada;
+        cant2eInsertada=0;
+
+        cant1e=cant1e+cant1eInsertada;
+        cant1eInsertada=0;
+
+        cant50=cant50+cant50Insertada;
+        cant50Insertada=0;
+
+        cant20=cant20+cant20Insertada;
+        cant20Insertada=0;
+
+        cant10=cant10+cant10Insertada;
+        cant10Insertada=0;
+
+        cant5=cant5+cant5Insertada;
+        cant5Insertada=0;
+    }
+
+
+    private static void devolucionCambio(int centimos){
+
+        /**
+         * Metodo para restar el precio del producto de la caja
+         */
+
+        do {
+            System.out.println("El cambio a devolver es el siguiente:"+centimos+" cént.");
+            if (centimos / 200 > 0) {
+
+                System.out.printf("%nMonedas de 2€: %d", centimos / 200);
+                //System.out.println("\nMonedas de 2 euros: "+String.format("%.0f", centimos/200));
+                centimos %= 200;
+                cant2e--;
+            }
+            if (centimos / 100 > 0) {
+
+                System.out.printf("%nMonedas de 1€: %d", centimos / 100);
+                //System.out.println("Monedas de 1 euro: "+String.format("%.0f", centimos/100));
+                centimos %= 100;
+                cant1e--;
+            }
+            if (centimos / 50 > 0) {
+
+                System.out.printf("%nMonedas de 50 cént: %d", centimos / 50);
+                //System.out.println("Monedas de 50 cent: "+String.format("%.0f", centimos/50));
+                centimos %= 50;
+                cant50--;
+            }
+            if (centimos / 20 > 0) {
+
+                System.out.printf("%nMonedas de 20 cént: %d", centimos / 20);
+                //System.out.println("Monedas de 20 cent: "+String.format("%.0f", centimos/20));
+                centimos %= 20;
+                cant20--;
+            }
+            if (centimos / 10 > 0) {
+
+                System.out.printf("%nMonedas de 10 cént: %d", centimos / 10);
+                //System.out.println("Monedas de 10 cent: "+String.format("%.0f", centimos/10));
+                centimos %= 10;
+                cant10--;
+            }
+            if (centimos / 5 > 0) {
+
+                System.out.printf("%nMonedas de 5 cént: %d", centimos / 5);
+                //System.out.println("Monedas de 5 cent: "+String.format("%.0f", centimos/5));
+                centimos %= 5;
+                cant5--;
+            }
+            System.out.println();
+        }while(centimos!=0);
+    }
+    private static int calcularCambioCajetin(double precioProducto){
+
+        //Preparamos a trozos el cajetin para poder transformarlo a int
+        String unionCaja;
+        int centimos;
+
+        //Guardamos en String el valor del cajetin(total) 3,40
+        String str = String.valueOf(calcularCajetin());
+        //Obtenemos la parte entera y la transformamos en int
+        int intNumberCaja = Integer.parseInt(str.substring(0, str.indexOf('.')));
+        //Obtenemos la parte decimal y la transformamos en int
+        int decNumberIntCaja = Integer.parseInt(str.substring(str.indexOf('.') + 1));
+
+        //Si no termina en 5 le añadimos un 0 pues java lo omite
+        if(decNumberIntCaja%10!=5){
+            unionCaja = intNumberCaja+""+(decNumberIntCaja+""+0);
+            centimos = Integer.parseInt(unionCaja);
+        }else{
+            unionCaja = intNumberCaja+""+decNumberIntCaja;
+            centimos = Integer.parseInt(unionCaja);
+        }
+
+        //Pareparamos a trozos el precio del producto para poder transformarlo a int
+        String unionPrecio;
+        int precio;
+        String str2 = String.valueOf(precioProducto);
+        int intNumberPrecio = Integer.parseInt(str2.substring(0, str2.indexOf('.')));
+        int decNumberIntPrecio = Integer.parseInt(str2.substring(str2.indexOf('.') + 1));
+
+        //Si no termina en 5 le añadimos un 0 pues java lo omite
+        //if(decNumberIntPrecio%10!=5){
+        unionPrecio = intNumberPrecio+""+(decNumberIntPrecio+""+0);
+        precio = Integer.parseInt(unionPrecio);
+        //}else{
+        // unionPrecio = intNumberPrecio+""+decNumberIntPrecio;
+        // precio = Integer.parseInt(unionPrecio);
+        //}
+
+        //Restamos el precio del producto a la caja
+        return centimos-=precio;
+    }
 
     public static boolean comprobarPrecio(Tipo t){
         boolean respuesta=false;

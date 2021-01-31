@@ -212,11 +212,13 @@ public class Maquina {
             if (Producto.hayStock(t)) {
                 //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
                 Producto p = new Producto(t);
+
             } else {
                 System.out.println("No hay más cafés solos disponibles.");
             }
         } else {
             System.out.println(insertarDinero);
+
         }
 
     }
