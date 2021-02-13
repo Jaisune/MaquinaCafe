@@ -400,6 +400,7 @@ public class Moneda {
             if (aux5 > 0) {
                 System.out.printf("%nMonedas de 5 cent: %d", aux5);
             }
+            System.out.println();
         }
 
         //Se restan las cantidades de los contadores auxiliares que han ido acumulando las devoluciones de las monedas.

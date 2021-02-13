@@ -41,7 +41,7 @@ public class Maquina {
         //1 - Llamada al método que muestra el menú
         mostrarMenu();
         //Mostramos la suma de la caja de monedas
-        System.out.println("Cantidad total: " + Moneda.getCajetin() + "€");
+        System.out.println("Tu credito es de: " + String.format("%.2f", Moneda.getCajetin()) + "€");
         //2 - Asignación de la opción que se introduzca en el menú
         opcion = introducirOpcionMenu();
 
@@ -170,7 +170,7 @@ public class Maquina {
             Moneda.mostrarMonedas();
 
             //Mostrar cantidad de la caja
-            System.out.println("Cantidad total: " + Moneda.getCajetin() + "€");
+            System.out.println("Tu credito es de: " + String.format("%.2f", Moneda.getCajetin()) + "€");
             try {
                 moneda = sc.nextInt();
             } catch (Exception e) {
@@ -184,7 +184,7 @@ public class Maquina {
                 } else {
                     if (Moneda.esMonedaValida(moneda)) {
                         Moneda.totalCajetin(moneda);
-                        System.out.println("Cantidad total: " + Moneda.getCajetin() + "€");
+                        System.out.println("Tu credito es de: " + String.format("%.2f", Moneda.getCajetin()) + "€");
                     } else {
                         System.out.println("Moneda introducida no valida.");
                     }
@@ -266,7 +266,8 @@ public class Maquina {
         boolean saliradmin = false;
         //bucle que repite el programa hasta que le asignemos la opción de salir (0)
         do {
-            menuAdministracion();
+            saliradmin=menuAdministracion();
+
         } while (!saliradmin);
 
     }
@@ -294,12 +295,12 @@ public class Maquina {
 
         //3 - Si la opción es 0, la máquina se apaga
         if (opcion == 0) {
-            System.out.println("La máquina se apagará. ");
+            System.out.println("Regresar al menu principal");
             //Devolvemos true a la clase Main, para terminar el bucle que hay en esta y finalizar el programa
             return true;
         }
 
-        iniciarMenu(opcion);
+        iniciarMenuAdmin(opcion);
 
         return salirAdmin;
     }
@@ -398,7 +399,7 @@ public class Maquina {
     }
 
     public void mostrarContenidoCajetines() {
-
+        System.out.println("hola");
     }
 
     public void modificarPrecio() {
