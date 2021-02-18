@@ -219,6 +219,7 @@ public class Maquina {
         } else {
             System.out.println(insertarDinero);
 
+
         }
 
     }
@@ -239,6 +240,7 @@ public class Maquina {
             }
         } else {
             System.out.println(insertarDinero);
+
         }
 
     }
@@ -257,6 +259,7 @@ public class Maquina {
             }
         } else {
             System.out.println(insertarDinero);
+
         }
 
     }
@@ -266,7 +269,7 @@ public class Maquina {
         boolean saliradmin = false;
         //bucle que repite el programa hasta que le asignemos la opción de salir (0)
         do {
-            saliradmin=menuAdministracion();
+            saliradmin = menuAdministracion();
 
         } while (!saliradmin);
 
@@ -382,40 +385,43 @@ public class Maquina {
         switch (opMenuAdmin) {
             case 0:
                 //volver al menu principal
+                menuMaquina();
             case 1:
-                mostrarContenidoCajetines();
+                Moneda.mostrarContenidoCajetines();
                 break;
             case 2:
                 modificarPrecio();
                 break;
             case 3:
-                mostrarVentas();
+                Producto.mostrarVentas();
                 break;
             case 4:
-                addProducto();
+                System.out.println("Añadir productos (función no implementada).");
                 break;
+
 
         }
     }
 
-    public void mostrarContenidoCajetines() {
-        System.out.println("hola");
-    }
+
 
     public void modificarPrecio() {
-
+        //System.out.println(Moneda.set);
     }
 
-    public void mostrarVentas() {
 
-    }
-
-    public void addProducto() {
-
-    }
-
+    /**
+     * Metodo que se encarga de contar las monedas que va a devolver el tipo
+     */
     private void devolverMonedas() {
-        System.out.println("devolverMonedas");
+        //Si la cajetilla no tiene ninguna moneda avisa de que no hay ninguna moneda
+        if (Moneda.getCajetin()==0){
+            System.out.println("No hay monedas disponibles.");
+        }else {
+            //Si hay monedas procede a la devolucion(en MONEDA)
+            Moneda.devolucionMonedas();
+        }
+
     }
 
 

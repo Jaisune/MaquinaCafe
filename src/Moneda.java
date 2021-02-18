@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 public class Moneda {
 
     //Atributos de clase
@@ -7,11 +9,11 @@ public class Moneda {
     //las variables que contienen "e" al final se refieren a euros, el resto son centimos
     //monedas para el cambio
     private static int cant2e=0;
-    private static int cant1e=0;
-    private static int cant50=0;
+    private static int cant1e=1;
+    private static int cant50=1;
     private static int cant20=0;
-    private static int cant10=3;
-    private static int cant5=10;
+    private static int cant10=0;
+    private static int cant5=1;
 
     //Monedas insertadas en la cajetilla para comprar el producto
     private static int cant2eInsertada=0;
@@ -162,7 +164,12 @@ public class Moneda {
                 break;
         }
     }
-    private static double calcularCajetin(){
+
+    /**
+     * Metodo que calcula las monedas que introducimos al comprar un producto
+     * @return
+     */
+    protected static double calcularCajetin(){
         double suma;
         return suma=(cant1eInsertada*1.00)+(cant2eInsertada*2.00)+(cant50Insertada*0.50)+(cant10Insertada*0.10)+(cant20Insertada*0.20)+(cant5Insertada*0.05);
     }
@@ -412,12 +419,13 @@ public class Moneda {
         cant5 -= aux5;
 
     }
+
+    /**
+     * Método para calcular el resto de cajetin - precioProducto para obtener el total en centimos para los calculos de devolucion de moneda
+     * @param precioProducto
+     * @return
+     */
     private static int calcularCambioCajetin(double precioProducto){
-
-        /*
- Método para calcular el resto de cajetin - precioProduct para obtener el total en centimos para los calculos de devolucion de moneda
-         */
-
 
         double cajetinMonedas=calcularCajetin()*100;
         int centimos = (int)cajetinMonedas;
@@ -458,4 +466,67 @@ public class Moneda {
         }
         return respuesta;
     }
+
+    public static void mostrarContenidoCajetines() {
+        //obtener el calculo del total de monedas
+
+        System.out.println(calcularSumaTotalMonedas()+" Total de euros en caja");
+
+
+        System.out.println(getCant2e()+" Monedas de 2 €");
+        System.out.println(getCant1e()+" Monedas de 1 €");
+        System.out.println(getCant50()+" Monedas de 50 cent");
+        System.out.println(getCant20()+" Monedas de 20 cent");
+        System.out.println(getCant10()+" Monedas de 10 cent");
+        System.out.println(getCant5()+" Monedas de 5 cent");
+    }
+
+    /**
+     * Metodo que calcula el valor total de las monedas que tenemos en la cafetera
+     * @return
+     */
+    public static double calcularSumaTotalMonedas(){
+        double sumaMonedas;
+        sumaMonedas=(cant1e*1.00)+(cant2e*2.00)+(cant50*0.50)+(cant10*0.10)+(cant20*0.20)+(cant5*0.05);
+
+        return sumaMonedas;
+    }
+
+    /**
+     * Metodo que se encarga de la devolucion de las monedas
+     * @return
+     */
+    public static void devolucionMonedas(){
+
+        System.out.println("Se han devuelto: ");
+
+        //Si hay alguna moneda, muestro el texto, la cantidad devuelta y lo reseteo.
+        if (cant2eInsertada!=0) {
+            System.out.println("Monedas de: "+getCant2eInsertada()+"de 2€");
+            cant2eInsertada=0;
+        }
+        if (cant1eInsertada!=0) {
+            System.out.println("Monedas de: " + getCant1eInsertada() + "de 1€");
+            cant1eInsertada = 0;
+        }
+        if (cant50Insertada!=0) {
+            System.out.println("Monedas de: " + getCant50Insertada() + "de 50 cent");
+            cant50Insertada = 0;
+        }
+        if (cant20Insertada!=0) {
+            System.out.println("Monedas de: " + getCant2eInsertada() + "de 20 cent");
+            cant20Insertada = 0;
+        }
+        if (cant10Insertada!=0) {
+            System.out.println("Monedas de: " + getCant2eInsertada() + "de 10 cent");
+            cant10Insertada = 0;
+        }
+        if (cant5Insertada!=0) {
+            System.out.println("Monedas de: " + getCant2eInsertada() + "de 5 cent");
+            cant5Insertada = 0;
+        }
+        cajetin=calcularCajetin();
+    }
+
+
 }

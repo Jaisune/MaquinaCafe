@@ -181,4 +181,10 @@ public class Producto {
 
     }
 
+    public static void mostrarVentas(){
+        System.out.println("Cantidad de descafeinado vendida: "+ getCantidadDescafeinadoVendida());
+        System.out.println("Cantidad de café solo vendido: "+ getCantidadSoloVendida());
+        System.out.println("Cantidad té vendida: "+ getCantidadTeVendida());
+    }
+
 }
