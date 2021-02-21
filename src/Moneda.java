@@ -3,25 +3,25 @@ import jdk.swing.interop.SwingInterOpUtils;
 public class Moneda {
 
     //Atributos de clase
-    private static double cajetin=0; //contiene las monedas para pagar el producto
-    private static double totalCaja=0; //contiene el cambio total(la suma total de todas las monedas) para la devolución
+    private static double cajetin = 0; //contiene las monedas para pagar el producto
+    private static double totalCaja = 0; //contiene el cambio total(la suma total de todas las monedas) para la devolución
 
     //las variables que contienen "e" al final se refieren a euros, el resto son centimos
     //monedas para el cambio
-    private static int cant2e=0;
-    private static int cant1e=1;
-    private static int cant50=1;
-    private static int cant20=0;
-    private static int cant10=0;
-    private static int cant5=1;
+    private static int cant2e = 0;
+    private static int cant1e = 1;
+    private static int cant50 = 1;
+    private static int cant20 = 0;
+    private static int cant10 = 0;
+    private static int cant5 = 2;
 
     //Monedas insertadas en la cajetilla para comprar el producto
-    private static int cant2eInsertada=0;
-    private static int cant1eInsertada=0;
-    private static int cant50Insertada=0;
-    private static int cant20Insertada=0;
-    private static int cant10Insertada=0;
-    private static int cant5Insertada=0;
+    private static int cant2eInsertada = 0;
+    private static int cant1eInsertada = 0;
+    private static int cant50Insertada = 0;
+    private static int cant20Insertada = 0;
+    private static int cant10Insertada = 0;
+    private static int cant5Insertada = 0;
 
     //Getters y Setters de los atributos
 
@@ -137,12 +137,12 @@ public class Moneda {
         Moneda.cant5Insertada = cant5Insertada;
     }
 
-    public static void totalCajetin(int num){
+    public static void totalCajetin(int num) {
         cantidadMonedasInsertadas(num);
-        cajetin=calcularCajetin();
+        cajetin = calcularCajetin();
     }
 
-    private static void cantidadMonedasInsertadas(int num){
+    private static void cantidadMonedasInsertadas(int num) {
         switch (num) {
             case 1:
                 cant1eInsertada++;
@@ -167,14 +167,15 @@ public class Moneda {
 
     /**
      * Metodo que calcula las monedas que introducimos al comprar un producto
+     *
      * @return
      */
-    protected static double calcularCajetin(){
-        double suma;
-        return suma=(cant1eInsertada*1.00)+(cant2eInsertada*2.00)+(cant50Insertada*0.50)+(cant10Insertada*0.10)+(cant20Insertada*0.20)+(cant5Insertada*0.05);
+    protected static double calcularCajetin() {
+        double suma= (cant1eInsertada * 1.00) + (cant2eInsertada * 2.00) + (cant50Insertada * 0.50) + (cant10Insertada * 0.10) + (cant20Insertada * 0.20) + (cant5Insertada * 0.05);
+        return suma;
     }
 
-    public static void mostrarMonedas(){
+    public static void mostrarMonedas() {
         System.out.println("\n INTRODUCIR MONEDAS");
         System.out.println("Monedas aceptadas:");
         System.out.println("5 -> 5 Cts.");
@@ -186,48 +187,50 @@ public class Moneda {
         System.out.println("0 -> Finalizar.");
     }
 
-    public static boolean esMonedaValida(int moneda){
-        if(moneda==1 || moneda==2 || moneda == 5 || moneda == 10 || moneda == 20 || moneda == 50){
+    public static boolean esMonedaValida(int moneda) {
+        if (moneda == 1 || moneda == 2 || moneda == 5 || moneda == 10 || moneda == 20 || moneda == 50) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public static void restarCajetin(double precio){
+
+    public static void restarCajetin(double precio) {
         //Calculamos el precio restante (a devolver) en numero entero
         int centimos = calcularCambioCajetin(precio);
         //Calcularemos las monedas a devolver
         devolucionCambio(centimos);
         //Método en el que sumamos las monedas restantes a las monedas que va a tener la maquina
         vaciarCajetin();
-        cajetin=calcularCajetin();
+        cajetin = calcularCajetin();
     }
 
     /**
      * Este metodo se encarga de sumar las monedas restantes de la compra a las monedas que va a tener la máquina
      */
-    private static void vaciarCajetin(){
-        cant2e=cant2e+cant2eInsertada;
-        cant2eInsertada=0;
+    private static void vaciarCajetin() {
+        cant2e = cant2e + cant2eInsertada;
+        cant2eInsertada = 0;
 
-        cant1e=cant1e+cant1eInsertada;
-        cant1eInsertada=0;
+        cant1e = cant1e + cant1eInsertada;
+        cant1eInsertada = 0;
 
-        cant50=cant50+cant50Insertada;
-        cant50Insertada=0;
+        cant50 = cant50 + cant50Insertada;
+        cant50Insertada = 0;
 
-        cant20=cant20+cant20Insertada;
-        cant20Insertada=0;
+        cant20 = cant20 + cant20Insertada;
+        cant20Insertada = 0;
 
-        cant10=cant10+cant10Insertada;
-        cant10Insertada=0;
+        cant10 = cant10 + cant10Insertada;
+        cant10Insertada = 0;
 
-        cant5=cant5+cant5Insertada;
-        cant5Insertada=0;
+        cant5 = cant5 + cant5Insertada;
+        cant5Insertada = 0;
     }
 
     /**
      * Metodo que resta el precio del producto de la caja
+     *
      * @param centimos
      */
     private static void devolucionCambio(int centimos) {
@@ -422,45 +425,45 @@ public class Moneda {
 
     /**
      * Método para calcular el resto de cajetin - precioProducto para obtener el total en centimos para los calculos de devolucion de moneda
+     *
      * @param precioProducto
      * @return
      */
-    private static int calcularCambioCajetin(double precioProducto){
+    private static int calcularCambioCajetin(double precioProducto) {
 
-        double cajetinMonedas=calcularCajetin()*100;
-        int centimos = (int)cajetinMonedas;
+        double cajetinMonedas = calcularCajetin() * 100;
+        int centimos = (int) cajetinMonedas;
 
-        double precio = precioProducto*100;
-        int precioProductoEntero = (int)precio;
-        centimos-=precioProductoEntero;
+        double precio = precioProducto * 100;
+        int precioProductoEntero = (int) precio;
+        centimos -= precioProductoEntero;
 
         return centimos;
     }
 
 
-
-    public static boolean comprobarPrecio(Tipo t){
-        boolean respuesta=false;
+    public static boolean comprobarPrecio(Tipo t) {
+        boolean respuesta = false;
         switch (t) {
             case SOLO:
-                if (cajetin>=Producto.getPrecioActualSolo()) {
-                    respuesta=true;
-                }else{
-                    respuesta=false;
+                if (cajetin >= Producto.getPrecioActualSolo()) {
+                    respuesta = true;
+                } else {
+                    respuesta = false;
                 }
                 break;
             case DESCAFEINADO:
-                if (cajetin>=Producto.getPrecioActualDescafeinado()) {
-                    respuesta=true;
-                }else{
-                    respuesta=false;
+                if (cajetin >= Producto.getPrecioActualDescafeinado()) {
+                    respuesta = true;
+                } else {
+                    respuesta = false;
                 }
                 break;
             case TE:
-                if (cajetin>=Producto.getPrecioActualTe()) {
-                    respuesta=true;
-                }else{
-                    respuesta=false;
+                if (cajetin >= Producto.getPrecioActualTe()) {
+                    respuesta = true;
+                } else {
+                    respuesta = false;
                 }
                 break;
         }
@@ -470,63 +473,288 @@ public class Moneda {
     public static void mostrarContenidoCajetines() {
         //obtener el calculo del total de monedas
 
-        System.out.println(calcularSumaTotalMonedas()+" Total de euros en caja");
+        System.out.println(calcularSumaTotalMonedas() + " Total de euros en caja");
 
 
-        System.out.println(getCant2e()+" Monedas de 2 €");
-        System.out.println(getCant1e()+" Monedas de 1 €");
-        System.out.println(getCant50()+" Monedas de 50 cent");
-        System.out.println(getCant20()+" Monedas de 20 cent");
-        System.out.println(getCant10()+" Monedas de 10 cent");
-        System.out.println(getCant5()+" Monedas de 5 cent");
+        System.out.println(getCant2e() + " Monedas de 2 €");
+        System.out.println(getCant1e() + " Monedas de 1 €");
+        System.out.println(getCant50() + " Monedas de 50 cent");
+        System.out.println(getCant20() + " Monedas de 20 cent");
+        System.out.println(getCant10() + " Monedas de 10 cent");
+        System.out.println(getCant5() + " Monedas de 5 cent");
     }
 
     /**
      * Metodo que calcula el valor total de las monedas que tenemos en la cafetera
+     *
      * @return
      */
-    public static double calcularSumaTotalMonedas(){
+    public static double calcularSumaTotalMonedas() {
         double sumaMonedas;
-        sumaMonedas=(cant1e*1.00)+(cant2e*2.00)+(cant50*0.50)+(cant10*0.10)+(cant20*0.20)+(cant5*0.05);
+        sumaMonedas = (cant1e * 1.00) + (cant2e * 2.00) + (cant50 * 0.50) + (cant10 * 0.10) + (cant20 * 0.20) + (cant5 * 0.05);
 
         return sumaMonedas;
     }
 
     /**
      * Metodo que se encarga de la devolucion de las monedas
+     *
      * @return
      */
-    public static void devolucionMonedas(){
+    public static void devolucionMonedas() {
 
         System.out.println("Se han devuelto: ");
 
         //Si hay alguna moneda, muestro el texto, la cantidad devuelta y lo reseteo.
-        if (cant2eInsertada!=0) {
-            System.out.println("Monedas de: "+getCant2eInsertada()+"de 2€");
-            cant2eInsertada=0;
+        if (cant2eInsertada != 0) {
+            System.out.println("Monedas de: " + getCant2eInsertada() + "de 2€");
+            cant2eInsertada = 0;
         }
-        if (cant1eInsertada!=0) {
+        if (cant1eInsertada != 0) {
             System.out.println("Monedas de: " + getCant1eInsertada() + "de 1€");
             cant1eInsertada = 0;
         }
-        if (cant50Insertada!=0) {
+        if (cant50Insertada != 0) {
             System.out.println("Monedas de: " + getCant50Insertada() + "de 50 cent");
             cant50Insertada = 0;
         }
-        if (cant20Insertada!=0) {
-            System.out.println("Monedas de: " + getCant2eInsertada() + "de 20 cent");
+        if (cant20Insertada != 0) {
+            System.out.println("Monedas de: 20 cent" + getCant20Insertada());
             cant20Insertada = 0;
         }
-        if (cant10Insertada!=0) {
-            System.out.println("Monedas de: " + getCant2eInsertada() + "de 10 cent");
+        if (cant10Insertada != 0) {
+            System.out.println("Monedas de: " + getCant10Insertada() + "de 10 cent");
             cant10Insertada = 0;
         }
-        if (cant5Insertada!=0) {
-            System.out.println("Monedas de: " + getCant2eInsertada() + "de 5 cent");
+        if (cant5Insertada != 0) {
+            System.out.println("Monedas de: " + getCant5Insertada() + "de 5 cent");
             cant5Insertada = 0;
         }
-        cajetin=calcularCajetin();
+        cajetin = calcularCajetin();
     }
 
+    public static boolean hayCambio(double precioProducto) {
+        //Obtenemos todo el cambio de la caja en INT
+        int cambio = (int) calcularSumaTotalMonedas();
 
+        //Calculamos el resto del cajetin - precio
+        int centimos = calcularCambioCajetin(precioProducto);
+        /*Comparamos que el cambio a devolver de la cajetilla sea inferior o igual que el cambio de la maquina y que haya
+        la cantidad de monedas de cambio suficientes*/
+        if (centimos <= cambio && comprobarStockMonedas(centimos)) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean comprobarStockMonedas(double centimos) {
+        /**
+         * Método que comprueba si hay la cantidad de monedas necesarias para proporcionar el cambio del producto.
+         */
+
+        //Variables auxiliares que harán de contador de las veces que devuelve una cantidad concreta de moneda.
+        int aux2 = 0;
+        int aux1 = 0;
+        int aux50 = 0;
+        int aux20 = 0;
+        int aux10 = 0;
+        int aux5 = 0;
+
+        //Si el cambio está dentro del rango de la cantidad de la moneda se comprobara si...
+        if (centimos / 200 > 0) {
+            //Si hay la misma cantidad de monedas de cambio del tipo que es o mayor cantidad...
+            if ((cant2e >= centimos / 200)) {
+
+                //Se restaran directamente la cantidad de monedas del tipo que es.
+                cant2e -= (centimos / 200);
+                //Al contador se le dirá cuantas monedas hay de este tipo.
+                aux2 += (centimos / 200);
+                //Se resta el cambio por completo pues hay cambio de esta moneda.
+                centimos %= 200;
+
+            } else if (cant2e > 0) {
+                //Si no hay cambio total de esta moneda pues se hará vía devolucion de lo que se pueda.
+
+                //Se resta la cantidad del tipo de moneda en la que está.
+                centimos -= 200;
+                //Se resta un contador de la cantidad.
+                cant2e--;
+                //Se suma un contador del tipo de moneda que es para saber cuantas monedas ha restado.
+                aux2++;
+
+                //Mientras que quede alguna moneda se repite el bucle.
+                while (centimos != 0) {
+                    //Si se gastan las monedas de este tipo y queda aun por devolver se romperá el ciclo y se pasará a comprobar con la moneda inferior a esta.
+                    if ((cant2e * 100) != centimos) {
+                        break;
+                    }
+                    //Si siguen quedando monedas se hará el mismo proceso de antes del bucle mientras que queden monedas.
+                    centimos -= 200;
+                    cant2e--;
+                    aux2++;
+                }
+            }
+        }
+
+        if (centimos / 100 > 0) {
+
+            if ((cant1e >= centimos / 100)) {
+
+                cant1e -= (centimos / 100);
+                aux1 += (centimos / 100);
+                centimos %= 100;
+            } else if (cant1e > 0) {
+
+                centimos -= 100;
+                cant1e--;
+                aux1++;
+                while (centimos != 0) {
+                    if ((cant1e * 100) != centimos) {
+                        break;
+                    }
+                    centimos -= 100;
+                    cant1e--;
+                    aux1++;
+                }
+            }
+        }
+        if ((centimos / 50) > 0) {
+
+            if (cant50 >= (centimos / 50)) {
+                cant50 -= (centimos / 50);
+                aux50 += (centimos / 50);
+                centimos %= 50;
+
+            } else if (cant50 > 0) {
+
+                centimos -= 50;
+                cant50--;
+                aux50++;
+                while (centimos != 0) {
+                    if ((cant50 * 10) != centimos) {
+                        break;
+                    }
+                    centimos -= 50;
+                    cant50--;
+                    aux50++;
+                }
+            }
+        }
+
+        if (centimos / 20 > 0) {
+
+            if ((cant20 >= (centimos / 20))) {
+
+                cant20 -= (centimos / 20);
+                aux20 += (centimos / 20);
+                centimos %= 20;
+            } else if (cant20 > 0) {
+
+                centimos -= 20;
+                cant20--;
+                aux20++;
+                while (centimos != 0) {
+                    if ((cant20 * 10) != centimos) {
+                        break;
+                    }
+                    centimos -= 20;
+                    cant20--;
+                    aux20++;
+                }
+            }
+        }
+
+        if (centimos / 10 > 0) {
+
+            if ((cant10 >= (centimos / 10))) {
+
+                cant10 -= (centimos / 10);
+                aux10 += (centimos / 10);
+                centimos %= 10;
+            } else if (cant10 > 0) {
+
+                centimos -= 10;
+                cant10--;
+                aux10++;
+                while (centimos != 0) {
+                    if (cant10 == 0) {
+                        break;
+                    }
+                    centimos -= 10;
+                    cant10--;
+                    aux10++;
+                }
+            }
+        }
+
+        if (centimos / 5 > 0) {
+
+            if ((cant5 >= (centimos / 5))) {
+
+                cant5 -= (centimos / 5);
+                aux5 += (centimos / 5);
+                centimos %= 5;
+            } else if (cant5 > 0) {
+
+                centimos -= 5;
+                cant5--;
+                aux5++;
+                while (centimos != 0) {
+                    if (cant5 == 0) {
+                        break;
+                    }
+                    centimos -= 5;
+                    cant5--;
+                    aux5++;
+                }
+            }
+        }
+
+        //Dado que este método es de comprobacion y no de aplicar pues se restauran los valores de las cantidades a como estaban inicialmente con los auxiliares que contienen las cantidades restadas.
+        cant2e += aux2;
+        cant1e += aux1;
+        cant50 += aux50;
+        cant20 += aux20;
+        cant10 += aux10;
+        cant5 += aux5;
+
+        //Si se ha podido restar todo el cambio significa que hay cambio, si ha quedado algun centimo por falta de stock de monedas significará que no hay cambio disponible.
+        if (centimos != 0) {
+            return false;
+        } else {
+            return true;
+
+
+        }
+    }
+
+    /**
+     *  Metodo que comprueba si falta stock en alguna moneda de cambio.
+     */
+    public static void comprobarMonedas(){
+        System.out.println();
+        if (cant2e == 0) {
+            System.out.println("Se han agotado las monedas de 2€, por favor introduzca en la caja de cambio, gracias.");
+        }
+        if (cant1e == 0) {
+            System.out.println("Se han agotado las monedas de 1€, por favor introduzca en la caja de cambio, gracias.");
+        }
+        if (cant50 == 0) {
+            System.out.println("Se han agotado las monedas de 50 cent, por favor introduzca en la caja de cambio, gracias.");
+        }
+        if (cant20 == 0) {
+            System.out.println("Se han agotado las monedas de 20 cent, por favor introduzca en la caja de cambio, gracias.");
+        }
+        if (cant10 == 0) {
+            System.out.println("Se han agotado las monedas de 10 cent, por favor introduzca en la caja de cambio, gracias.");
+        }
+        if (cant5 == 0) {
+            System.out.println("Se han agotado las monedas de 5 cent, por favor introduzca en la caja de cambio, gracias.");
+        }
+    }
+    public static void actualizarCambioMaquina(){
+
+    }
 }

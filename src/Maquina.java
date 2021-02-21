@@ -38,7 +38,9 @@ public class Maquina {
         int opcion;
         boolean salir = false;
 
-        //1 - Llamada al método que muestra el menú
+        //mostrar si falta alguna moneda en la maquina para el cambio
+        Moneda.comprobarMonedas();
+        //1 - Llamada al método que muestra el menu
         mostrarMenu();
         //Mostramos la suma de la caja de monedas
         System.out.println("Tu credito es de: " + String.format("%.2f", Moneda.getCajetin()) + "€");
@@ -201,20 +203,31 @@ public class Maquina {
         //Asignamos el tipo del producto
         Tipo t = Tipo.SOLO;
 
-        //PASO1(COMPROBAR QUE HAY CAMBIO)
-        //PASO2(COMPROBAR QUE HAY DINERO PARA COMPRAR PRODUCTO)
+        //PASO1(COMPROBAR QUE HAY DINERO PARA COMPRAR PRODUCTO)
+        //PASO2(COMPROBAR QUE HAY CAMBIO)
         //PASO3(COMPROBAR STOCK)
         //PASO4(CREAR OBJETO)
 
+
+
         //Comprobar si hay dinero suficiente para comprar el producto
         if (Moneda.comprobarPrecio(t)) {
-            //Si hay stock, podemos crear cafés, sino, no.
-            if (Producto.hayStock(t)) {
-                //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
-                Producto p = new Producto(t);
 
-            } else {
-                System.out.println("No hay más cafés solos disponibles.");
+            //Comprobar que haya devolucion tras comprar el producto
+            if (Moneda.hayCambio(Producto.getPrecioActualSolo())) {
+
+
+                //Si hay stock, podemos crear cafés, sino, no.
+                if (Producto.hayStock(t)) {
+                    //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
+                    Producto p = new Producto(t);
+
+                } else {
+                    System.out.println("No hay más cafés solos disponibles.");
+                }
+            }else{
+                System.out.println("No hay suficiente cambio disponible para devolver.");
+                Moneda.devolucionMonedas();
             }
         } else {
             System.out.println(insertarDinero);
@@ -229,7 +242,7 @@ public class Maquina {
      */
     private void crearDescafeinado() {
         Tipo t = Tipo.DESCAFEINADO;
-        //Comprobar si hay dinero suficiente para comprar el producto
+
         if (Moneda.comprobarPrecio(t)) {
             if (Producto.hayStock(t)) {
                 //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
