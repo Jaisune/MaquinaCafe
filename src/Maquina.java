@@ -390,7 +390,7 @@ public class Maquina {
                 Moneda.mostrarContenidoCajetines();
                 break;
             case 2:
-                modificarPrecio();
+                Producto.modificarPrecio();
                 break;
             case 3:
                 Producto.mostrarVentas();
@@ -404,10 +404,6 @@ public class Maquina {
     }
 
 
-
-    public void modificarPrecio() {
-        //System.out.println(Moneda.set);
-    }
 
 
     /**
