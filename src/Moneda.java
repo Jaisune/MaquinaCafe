@@ -502,8 +502,7 @@ public class Moneda {
     public static void mostrarContenidoCajetines() {
         //obtener el calculo del total de monedas
 
-        System.out.println(calcularSumaTotalMonedas() + " Total de euros en caja");
-
+        System.out.println("\nTotal de euros en caja: "+calcularSumaTotalMonedas());
 
         System.out.println(getCant2e() + " Monedas de 2 €");
         System.out.println(getCant1e() + " Monedas de 1 €");
@@ -568,8 +567,9 @@ public class Moneda {
      * @return
      */
     public static boolean hayCambio(double precioProducto) {
+        double cambioDecimal=calcularSumaTotalMonedas()*100;
         //Obtenemos todo el cambio de la caja en INT
-        int cambio = (int) calcularSumaTotalMonedas();
+        int cambio = (int) cambioDecimal;
 
         //Calculamos el resto del cajetin - precio
         int centimos = calcularCambioCajetin(precioProducto);
@@ -586,7 +586,7 @@ public class Moneda {
     /**
      * Metodo que comprueba si hay la cantidad de monedas necesarias para proporcionar el cambio del producto.
      */
-    public static boolean comprobarStockMonedas(double centimos) {
+    public static boolean comprobarStockMonedas(int centimos) {
 
         //Variables auxiliares que harán de contador de las veces que devuelve una cantidad concreta de moneda.
         int aux2 = 0;
@@ -793,6 +793,8 @@ public class Moneda {
      * Metodo que actualiza las monedas de cambio de la maquina
      */
     public static void actualizarCambioMaquina(){
+
+
         int aux2,aux1,aux50,aux20,aux10,aux5;
 
         aux2=cant2e;
@@ -808,6 +810,5 @@ public class Moneda {
         cant20=aux20;
         cant10=aux10;
         cant5=aux5;
-
     }
 }
