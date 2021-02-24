@@ -137,11 +137,20 @@ public class Moneda {
         Moneda.cant5Insertada = cant5Insertada;
     }
 
+
+    /**
+     * Método que sumará las monedas introducidas en el cajetín una a una y sumandose en el cajetín de monedas de la máquina.
+     * @param num
+     */
     public static void totalCajetin(int num) {
         cantidadMonedasInsertadas(num);
         cajetin = calcularCajetin();
     }
 
+    /**
+     * Método que incrementa el contador de monedas del cajetín sobre la moneda que le llega.
+     * @param num
+     */
     private static void cantidadMonedasInsertadas(int num) {
         switch (num) {
             case 1:
@@ -166,7 +175,7 @@ public class Moneda {
     }
 
     /**
-     * Metodo que calcula las monedas que introducimos al comprar un producto
+     * Método que calcula las monedas que introducimos al comprar un producto
      *
      * @return
      */
@@ -175,6 +184,9 @@ public class Moneda {
         return suma;
     }
 
+    /**
+     * Método que se encarga de mostrar el tipo de monedas que aceptamos en el menú
+     */
     public static void mostrarMonedas() {
         System.out.println("\n INTRODUCIR MONEDAS");
         System.out.println("Monedas aceptadas:");
@@ -187,6 +199,11 @@ public class Moneda {
         System.out.println("0 -> Finalizar.");
     }
 
+    /**
+     * Método que comprobará si la moneda introducida es válida (todas menos las de 1 cent y 2 cent.
+     * @param moneda
+     * @return
+     */
     public static boolean esMonedaValida(int moneda) {
         if (moneda == 1 || moneda == 2 || moneda == 5 || moneda == 10 || moneda == 20 || moneda == 50) {
             return true;
@@ -195,6 +212,9 @@ public class Moneda {
         }
     }
 
+    /**
+     * * Método que hará el proceso de cambio con la devolución del producto y reseteará el cajetin.
+     */
     public static void restarCajetin(double precio) {
         //Calculamos el precio restante (a devolver) en numero entero
         int centimos = calcularCambioCajetin(precio);
@@ -206,7 +226,7 @@ public class Moneda {
     }
 
     /**
-     * Este metodo se encarga de sumar las monedas restantes de la compra a las monedas que va a tener la máquina
+     * Este método se encarga de sumar las monedas restantes de la compra a las monedas que va a tener la máquina
      */
     private static void vaciarCajetin() {
         cant2e = cant2e + cant2eInsertada;
@@ -442,6 +462,12 @@ public class Moneda {
     }
 
 
+    /**
+     * Método que comprueba que se haya introducido el precio correspondiente
+     * o superior para comprar el producto que se ha elegido.
+     * @param t
+     * @return
+     */
     public static boolean comprobarPrecio(Tipo t) {
         boolean respuesta = false;
         switch (t) {
@@ -470,6 +496,9 @@ public class Moneda {
         return respuesta;
     }
 
+    /**
+     * Metodo que muestra el contenido del cajetin, total de euros en caja y cuantas monedas hay de cada tipo
+     */
     public static void mostrarContenidoCajetines() {
         //obtener el calculo del total de monedas
 
@@ -533,6 +562,11 @@ public class Moneda {
         cajetin = calcularCajetin();
     }
 
+    /**
+     * Metodo que nos indica si hay suficiente cambio para devolver
+     * @param precioProducto
+     * @return
+     */
     public static boolean hayCambio(double precioProducto) {
         //Obtenemos todo el cambio de la caja en INT
         int cambio = (int) calcularSumaTotalMonedas();
@@ -549,10 +583,10 @@ public class Moneda {
         }
     }
 
+    /**
+     * Metodo que comprueba si hay la cantidad de monedas necesarias para proporcionar el cambio del producto.
+     */
     public static boolean comprobarStockMonedas(double centimos) {
-        /**
-         * Método que comprueba si hay la cantidad de monedas necesarias para proporcionar el cambio del producto.
-         */
 
         //Variables auxiliares que harán de contador de las veces que devuelve una cantidad concreta de moneda.
         int aux2 = 0;
@@ -754,7 +788,26 @@ public class Moneda {
             System.out.println("Se han agotado las monedas de 5 cent, por favor introduzca en la caja de cambio, gracias.");
         }
     }
+
+    /**
+     * Metodo que actualiza las monedas de cambio de la maquina
+     */
     public static void actualizarCambioMaquina(){
+        int aux2,aux1,aux50,aux20,aux10,aux5;
+
+        aux2=cant2e;
+        aux1=cant1e;
+        aux50=cant50;
+        aux20=cant20;
+        aux10=cant10;
+        aux5=cant5;
+
+        cant2e=aux2;
+        cant1e=aux1;
+        cant50=aux50;
+        cant20=aux20;
+        cant10=aux10;
+        cant5=aux5;
 
     }
 }

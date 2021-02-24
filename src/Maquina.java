@@ -162,6 +162,10 @@ public class Maquina {
         }
     }
 
+    /**
+     * Método que se encarga de hacer las comprobaciones necesarias para introducir monedas
+     * y mostrar las cantidades
+     */
     private void introducirMonedas() {
         boolean salir, monedaAceptada;
         int moneda = -1;
@@ -244,12 +248,19 @@ public class Maquina {
         Tipo t = Tipo.DESCAFEINADO;
 
         if (Moneda.comprobarPrecio(t)) {
-            if (Producto.hayStock(t)) {
-                //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
-                Producto p = new Producto(t);
-            } else {
-                System.out.println("No hay más cafés descafeinados disponibles.");
 
+            if (Moneda.hayCambio(Producto.getPrecioActualDescafeinado())) {
+
+                if (Producto.hayStock(t)) {
+                    //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
+                    Producto p = new Producto(t);
+                } else {
+                    System.out.println("No hay más cafés descafeinados disponibles.");
+
+                }
+            }else {
+                System.out.println("No hay suficiente cambio disponible para devolver.");
+                Moneda.devolucionMonedas();
             }
         } else {
             System.out.println(insertarDinero);
@@ -259,16 +270,22 @@ public class Maquina {
     }
 
     /**
-     * Método para crear un te
+     * Método para crear un té
      */
     private void crearTe() {
         Tipo t = Tipo.TE;
         if (Moneda.comprobarPrecio(t)) {
-            if (Producto.hayStock(t)) {
-                //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
-                Producto p = new Producto(t);
-            } else {
-                System.out.println("No hay más te disponibles.");
+
+            if (Moneda.hayCambio(Producto.getPrecioActualTe())) {
+                if (Producto.hayStock(t)) {
+                    //Creamos el objeto del producto enviándole el tipo en concreto (en este caso, un solo)
+                    Producto p = new Producto(t);
+                } else {
+                    System.out.println("No hay más te disponibles.");
+                }
+            }else {
+                System.out.println("No hay suficiente cambio disponible para devolver.");
+                Moneda.devolucionMonedas();
             }
         } else {
             System.out.println(insertarDinero);
