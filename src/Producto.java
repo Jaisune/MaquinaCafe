@@ -1,4 +1,8 @@
 import java.text.DecimalFormat;
+
+/**
+ * @author Jaime Díaz Menéndez
+ */
 import java.util.Scanner;
 
 public class Producto {
@@ -14,7 +18,7 @@ public class Producto {
     private static int cantidadTotal=0;
 
     //Precios de cada producto
-    private static double precioActualSolo = 0.5;
+    private static double precioActualSolo = 0.6;
     private static double precioActualDescafeinado = 0.7;
     private static double precioActualTe = 0.5;
 

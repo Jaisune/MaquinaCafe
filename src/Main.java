@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author Jaime Díaz Menéndez
+ *
+ */
+
 public class Main {
 
     /**

@@ -1,5 +1,11 @@
 import jdk.swing.interop.SwingInterOpUtils;
 
+/**
+ * 
+ * @author Jaime Diaz Menendez
+ *
+ */
+
 public class Moneda {
 
     //Atributos de clase
@@ -8,12 +14,12 @@ public class Moneda {
 
     //las variables que contienen "e" al final se refieren a euros, el resto son centimos
     //monedas para el cambio
-    private static int cant2e = 0;
-    private static int cant1e = 1;
-    private static int cant50 = 1;
-    private static int cant20 = 0;
-    private static int cant10 = 0;
-    private static int cant5 = 2;
+    private static int cant2e = 20;
+    private static int cant1e = 20;
+    private static int cant50 = 20;
+    private static int cant20 = 20;
+    private static int cant10 = 20;
+    private static int cant5 = 20;
 
     //Monedas insertadas en la cajetilla para comprar el producto
     private static int cant2eInsertada = 0;

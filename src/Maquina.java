@@ -180,8 +180,9 @@ public class Maquina {
             try {
                 moneda = sc.nextInt();
             } catch (Exception e) {
-                System.out.println("Introduzca un caracter númerico.");
+                System.err.println("Introduzca un caracter númerico.");
                 monedaAceptada = false;
+                sc.nextLine();
             }
             if (monedaAceptada) {
                 if (moneda == 0) {
